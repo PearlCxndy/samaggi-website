@@ -1,0 +1,317 @@
+[lang="th"] {
+  font-family: 'Kanit', sans-serif;
+}
+
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+
+
+.navbar-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 8vw;  /* <-- Add this */
+  padding-right: 5vw; /* Optional: for symmetrical spacing */
+}
+
+
+/* Add this to your existing CSS */
+.underline-hover {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-hover::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #2ecc71;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.underline-hover:hover::after {
+  transform: scaleX(1);
+}
+
+/* Update the logo hover animation */
+.logo-main {
+  position: relative;
+  overflow: hidden;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  transition: color 0.3s ease;
+  display: inline-block;
+  height: 1.5em;
+  padding-bottom: 4px; /* Space for underline */
+}
+
+.logo-main .text-default,
+.logo-main .text-hover {
+  display: inline-block;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  position: relative;
+  font-weight: 550;
+}
+
+.logo-main .text-default {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.logo-main .text-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.logo-main:hover .text-default {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.logo-main:hover .text-hover {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Update scrolled state colors */
+.navbar.scrolled .logo-main,
+.navbar.scrolled .logo-sub {
+  color: #2ecc71;
+}
+
+.navbar.scrolled .nav-links a p {
+  color: #2ecc71;
+}
+
+.navbar.scrolled .menu-toggle span {
+  background: #2ecc71;
+}
+
+/* Menu overlay items */
+.menu-item {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+}
+
+.menu-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #2ecc71;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-link {
+  text-decoration: none;
+}
+
+
+.logo-sub {
+  color: white;
+  font-size: 0.7rem;
+  margin: 0.25rem 0 0 0;
+  transition: color 0.3s ease;
+}
+
+.navbar.scrolled .logo-main,
+.navbar.scrolled .logo-sub {
+  color: #2ecc71;
+}
+
+/* Nav Links */
+
+.nav-links a {
+  text-decoration: none;
+}
+
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a p {
+  color: white;
+  font-size: 0.9rem;
+  margin: 0;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.navbar.scrolled .nav-links a p {
+  color: #2ecc71;
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1100;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #2ecc71;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled .menu-toggle {
+  display: block;
+}
+
+/* Menu Overlay */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  z-index: 1050;
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.menu-header .logo-main .text-default,
+.menu-header .logo-main .text-hover {
+  color: #1d1e22;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+}
+
+.close-button span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #1d1e22;
+}
+
+.close-button span:first-child {
+  transform: rotate(45deg);
+}
+
+.close-button span:last-child {
+  transform: rotate(-45deg);
+}
+
+.menu-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 80%;
+  max-width: 600px;
+}
+
+.menu-item {
+  padding: 1.5rem;
+  transition: background-color 0.3s ease;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.menu-item a {
+  text-decoration: none;
+  color: #1d1e22;
+  font-size: 3rem;
+  font-weight: 500;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  
+  .navbar {
+    padding: 1rem;
+  }
+  
+  .menu-item a {
+    font-size: 2rem;
+  }
+  
+  .menu-overlay {
+    padding: 1rem;
+  }
+  
+  .logo-main {
+    font-size: 1.2rem;
+  }
+  
+  .logo-sub {
+    font-size: 0.6rem;
+  }
+}
